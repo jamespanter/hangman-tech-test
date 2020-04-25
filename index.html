@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hangman</title>
-    <script async defer src="main2.js"></script>
+    <script async defer src="main.js"></script>
 </head>
 
-<body>
+<body onload="resetGame()">
     <div>
         <h2>Word:</h2>
         <div id="word-container"></div>
@@ -18,7 +18,7 @@
         <h2>Misses:</h2>
         <div id="wrong-letter-container"></div>
     </div>
-    <button>New Game</button>
+    <button onclick="resetGame()">New Game</button>
 </body>
 
 </html>
