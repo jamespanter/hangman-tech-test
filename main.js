@@ -22,6 +22,8 @@ const updateHTML = () => {
   wrongLetterContainer.innerHTML = wrongLettersArray
     .map((letter) => `<span>${letter} </span>`)
     .join("");
+  checkWin() ? (wrongLetterContainer.innerHTML = "Game won") : null;
+  checkLose() ? (wrongLetterContainer.innerHTML = "Game over") : null;
 };
 
 const checkLetter = (letter) => {
@@ -45,6 +47,12 @@ const addCorrectLetter = (letter) => {
 const addWrongLetter = (letter) =>
   wrongLettersArray.includes(letter) ? null : wrongLettersArray.push(letter);
 
+const checkLose = () => wrongLettersArray.length >= 6;
+
+const checkWin = () => !revealedLettersArray.includes("_");
+
 window.addEventListener("keydown", (e) => {
-  e.keyCode >= 65 && e.keyCode <= 90 ? checkLetter(e.key.toUpperCase()) : null;
+  e.keyCode >= 65 && e.keyCode <= 90 && !checkWin() && !checkLose()
+    ? checkLetter(e.key.toUpperCase())
+    : null;
 });
