@@ -23,3 +23,14 @@ const updateHTML = () => {
     .map((letter) => `<span>${letter} </span>`)
     .join("");
 };
+
+const checkLetter = (letter) => {
+  correctLettersArray.includes(letter)
+    ? console.log("add right letter")
+    : console.log("add wrong letter");
+  updateHTML();
+};
+
+window.addEventListener("keydown", (e) => {
+  e.keyCode >= 65 && e.keyCode <= 90 ? checkLetter(e.key.toUpperCase()) : null;
+});
