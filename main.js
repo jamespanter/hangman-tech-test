@@ -26,9 +26,20 @@ const updateHTML = () => {
 
 const checkLetter = (letter) => {
   correctLettersArray.includes(letter)
-    ? console.log("add right letter")
+    ? addCorrectLetter(letter)
     : console.log("add wrong letter");
   updateHTML();
+};
+
+const addCorrectLetter = (letter) => {
+  let indexesOfCorrectLetter = [];
+  correctLettersArray.forEach((char, index) =>
+    char === letter ? indexesOfCorrectLetter.push(index) : null
+  );
+
+  for (let i = 0; i < indexesOfCorrectLetter.length; i++) {
+    revealedLettersArray[indexesOfCorrectLetter[i]] = letter;
+  }
 };
 
 window.addEventListener("keydown", (e) => {
