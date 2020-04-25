@@ -27,7 +27,7 @@ const updateHTML = () => {
 const checkLetter = (letter) => {
   correctLettersArray.includes(letter)
     ? addCorrectLetter(letter)
-    : console.log("add wrong letter");
+    : addWrongLetter(letter);
   updateHTML();
 };
 
@@ -41,6 +41,9 @@ const addCorrectLetter = (letter) => {
     revealedLettersArray[indexesOfCorrectLetter[i]] = letter;
   }
 };
+
+const addWrongLetter = (letter) =>
+  wrongLettersArray.includes(letter) ? null : wrongLettersArray.push(letter);
 
 window.addEventListener("keydown", (e) => {
   e.keyCode >= 65 && e.keyCode <= 90 ? checkLetter(e.key.toUpperCase()) : null;
